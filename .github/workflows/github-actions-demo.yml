@@ -3,16 +3,14 @@ on:
   push:
     branches:
         - '**'
-on:
+  schedule:
+      - cron: "*/30 * * * *"
   workflow_dispatch:
     inputs:
       test_suite:
         description: 'Suite to be run (smoke/regression)'
         required: true
-        default: 'smoke'
-on:
-  schedule:
-      - cron: "*/30 * * * *"
+        default: 'smoke
 
 jobs:
     test-ci:
