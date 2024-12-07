@@ -72,8 +72,8 @@ public class Bai22_ShoppingCartTest extends BasicTest {
 
         // Cart Page - verify add to cart successfully
 
-        WebElement successmessage = driver.findElement(By.xpath("//a[@class='button wc-forward']"));
-        Assert.assertTrue(successmessage.isDisplayed());
+        // WebElement successmessage = driver.findElement(By.xpath("//a[@class='button wc-forward']"));
+        Assert.assertTrue(productDetailsPage.isSuccessMess());
 
     }
 

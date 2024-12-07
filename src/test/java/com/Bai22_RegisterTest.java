@@ -37,9 +37,8 @@ public class Bai22_RegisterTest extends BasicTest {
         // WebElement registerButton = driver.findElement(By.xpath("//button[@name='register']"));
         // registerButton.click();
         
-        WebElement errorMessage = driver.findElement(By.xpath("//label[@for='reg_password']"));
-        Assert.assertTrue(errorMessage.isDisplayed());
-
+        // WebElement errorMessage = driver.findElement(By.xpath("//label[@for='reg_password']"));
+        Assert.assertTrue(registerPage.isErrorMessage());
 
     }
 

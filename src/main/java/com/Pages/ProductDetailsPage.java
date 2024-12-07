@@ -8,56 +8,67 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductDetailsPage extends BasePage {
    
-public ProductDetailsPage(WebDriver givenDriver) {
-   super(givenDriver);
+    public ProductDetailsPage(WebDriver givenDriver) {
+        super(givenDriver);
 
     }
 
 
+    By byOrigin = By.xpath("//select[@id='pa_xuat-xu']");
 
-By byOrigin = By.xpath("//select[@id='pa_xuat-xu']");
+    By byOriginValue = By.xpath("//option[contains(text(), 'England')]");
 
-By byOriginValue = By.xpath("//option[contains(text(), 'England')]");
+    By byAddButton = By.xpath("//button[contains(text(),'Thêm vào giỏ hàng')]");
 
-By byAddButton = By.xpath("//button[contains(text(),'Thêm vào giỏ hàng')]");
+    By bySucessMessage = By.xpath("//a[@class='button wc-forward']");
 
-public void clickOrigin(){
-wait.until(ExpectedConditions.visibilityOfElementLocated(byOrigin)).click();
+    public void clickOrigin(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(byOrigin)).click();
 
-}
+    }
 
-public void selectkOrigin(){
-    wait.until(ExpectedConditions.visibilityOfElementLocated(byOriginValue)).click();
-    
-}
+    public void selectkOrigin(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(byOriginValue)).click();
+        
+    }
 
-public void clickAddButton(){
-    wait.until(ExpectedConditions.visibilityOfElementLocated(byAddButton)).click();
-    
-}
+    public void clickAddButton(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(byAddButton)).click();
+        
+    }
 
-// Page Factory
-@FindBy(xpath = "//select[@id='pa_xuat-xu']")
-public WebElement origin;
+    public boolean isSuccessMess(){
+        try{
+            wait.until(ExpectedConditions.visibilityOfElementLocated(bySucessMessage)).isDisplayed();
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
 
-@FindBy(xpath = "//option[contains(text(), 'England')]")
-public WebElement originValue;
+    // Page Factory
+    @FindBy(xpath = "//select[@id='pa_xuat-xu']")
+    public WebElement origin;
 
-@FindBy(xpath = "//button[contains(text(),'Thêm vào giỏ hàng')]")
-public WebElement addButton;
+    @FindBy(xpath = "//option[contains(text(), 'England')]")
+    public WebElement originValue;
 
-public ProductDetailsPage click_Origin(){
-    origin.click();
-    return this;
-}
+    @FindBy(xpath = "//button[contains(text(),'Thêm vào giỏ hàng')]")
+    public WebElement addButton;
 
-public ProductDetailsPage select_Origin(){
-    originValue.click();
-    return this;
-}
+    public ProductDetailsPage click_Origin(){
+        origin.click();
+        return this;
+    }
 
-public ProductDetailsPage click_AddButton(){
-    addButton.click();
-    return this;
-}
+    public ProductDetailsPage select_Origin(){
+        originValue.click();
+        return this;
+    }
+
+    public ProductDetailsPage click_AddButton(){
+        addButton.click();
+        return this;
+    }
 }
