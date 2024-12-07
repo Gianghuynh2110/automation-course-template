@@ -10,7 +10,7 @@ on:
       test_suite:
         description: 'Suite to be run (smoke/regression)'
         required: true
-        default: 'smoke
+        default: 'smoke'
 
 jobs:
     test-ci:
