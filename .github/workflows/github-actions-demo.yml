@@ -4,13 +4,13 @@ on:
     branches:
         - '**'
   schedule:
-      - cron: "*/30 * * * *"
+      - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       test_suite:
         description: 'Suite to be run (smoke/regression)'
         required: true
-        default: 'smoke'
+        default: 'SmokeTest'
 
 jobs:
     test-ci:
@@ -39,7 +39,7 @@ jobs:
     
       - name: CI test
         run: 
-          mvn clean test -Dsuite=SmokeTest
+          mvn clean test -Dsuite=${{ github.event.inputs.test_suite }}
 
       - uses: actions/upload-artifact@v3
         with:
